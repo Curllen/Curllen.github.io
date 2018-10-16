@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Curllen`Blog</title>
+    <link>http://curllen.github.io/</link>
+    <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>一枚程序员的博客</description>
+    <pubDate>Tue, 16 Oct 2018 13:32:00 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>IDEA打包类为Jar</title>
+      <link>http://curllen.github.io/2018/10/16/IDEA%E6%89%93%E5%8C%85%E7%B1%BB%E4%B8%BAJar/</link>
+      <guid>http://curllen.github.io/2018/10/16/IDEA%E6%89%93%E5%8C%85%E7%B1%BB%E4%B8%BAJar/</guid>
+      <pubDate>Tue, 16 Oct 2018 12:54:36 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;有的时候需要把自己写工具打包成jar包,供自己或者他人使用.&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;情况分为两类&quot;&gt;&lt;a href=&quot;#情况分为两类&quot; class=&quot;headerlink&quot; title=&quot;情况分为两类:&quot;&gt;&lt;/a&gt;情况分为两类:&lt;/h1&gt;&lt;blo
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p><code>有的时候需要把自己写工具打包成jar包,供自己或者他人使用.</code></p><h1 id="情况分为两类"><a href="#情况分为两类" class="headerlink" title="情况分为两类:"></a>情况分为两类:</h1><blockquote><p>1.自己的工具类没有导入(引用)第三方jar包;</p></blockquote><blockquote><p>2.自己的工具类引用了第三方jar包.</p></blockquote><hr><h2 id="第一类的处理"><a href="#第一类的处理" class="headerlink" title="第一类的处理"></a>第一类的处理</h2><ul><li>对于情况1的处理步骤(以下情况适应一次打包多个文件):<ul><li>如图, 例如打包实体类中的Book.java<br><br><img src="/2018/10/16/IDEA打包类为Jar/01.png" alt="image"><br></li><li>打开File -&gt; Project Structure -&gt; Artifacts -&gt; + -&gt; JAR -&gt; Empty<br><br><img src="/2018/10/16/IDEA打包类为Jar/02.png" alt="image"></li><li>在Output Layout中,依次建立文件夹,文件夹名字和结构和Book.java所在的路径保持一致<br><img src="/2018/10/16/IDEA打包类为Jar/03.png" alt="image"><br></li><li>在Output Layout中,点击 + -&gt;file, 添加Book.Class文件<br><img src="/2018/10/16/IDEA打包类为Jar/04.png" alt="image"><br><br><img src="/2018/10/16/IDEA打包类为Jar/05.png" alt="image"></li><li>点击 Apply ,再点击 Create Manifest创建配置文MANIFEST.MF,该文件可以定为工程中任意目录下,完成配置<br><br><img src="/2018/10/16/IDEA打包类为Jar/06.png" alt="image"><br><img src="/2018/10/16/IDEA打包类为Jar/07.png" alt="image"></li><li>回到IDEA，选择Build -&gt; Build Artifacts，成功生成Jar包。生成的Jar包位于上图设置的Output directory</li></ul></li></ul><hr><h2 id="第二类的处理"><a href="#第二类的处理" class="headerlink" title="第二类的处理"></a>第二类的处理</h2><ul><li>对于情况2的处理,可以使用方式1,但是在其他项目中导入自己的jar包后, 也得把自己jar包所依赖的第三方jar包也导入该工程,否者无效,方式1中网上的通过Class-Path设置第三方jar包位置是不可用的,第二种方式如下:<ul><li>如图, 例如打包实体类中的BeanCommonUtils.java,该类依赖第三方jar包commons-beanutils-1.9.3.jar <br></li><li>打开File -&gt; Project Structure -&gt; Artifacts -&gt; + -&gt; JAR -&gt; From modules with dependencies<br><br><img src="/2018/10/16/IDEA打包类为Jar/08.png" alt="image"><br><img src="/2018/10/16/IDEA打包类为Jar/09.png" alt="image"></li><li>上图出现的相关参数说明如下:<ul><li>module是你需要打成jar包的项目</li><li>MainClass是运行的主函数，如果不需要运行则可以不选择</li><li>jar files from libraries是项目打包的方式，下面选项大致的含义：<ol><li>extract to the target jar：把所有文件倒入进一个jar包里</li><li>copy to the。。。。：把项目的依赖包导出和项目一个目录，通过MANIFEST.MF文件来引用jar包。</li></ol></li></ul></li><li>回到IDEA，选择Build -&gt; Build Artifacts，成功生成Jar包。生成的Jar包位于上图设置的Output directory</li></ul></li></ul><blockquote><p>这里如果你的项目需要打成一个可运行的jar包推荐第二种，反之第一种。<br>另,未验证:如果项目中引用的Jar包有签名过，最后打包成的Jar包运行时会抛出错误：<br><code>java.lang.SecurityException: Invalid signature file digest for Manifest main attributes</code></p></blockquote><blockquote><p>From modules with dependencies，==会把在项目中用到的Jar包解压开==，当成项目的一部分，打包到最后的Jar包中，这样就不会出现采用方式1时，通过网上说的使用Class-Path方式设置第三方jar包位置时导致出现的找不到类异常。</p></blockquote><blockquote><p>==该方式只适合于该工程所有类都需要被打包到该jar包中的情况!==</p></blockquote><blockquote><p>==生成的jar中会有该工程lib文件夹下的第三方jar包, 这些jar已不产生作用, 可以删除!==</p></blockquote><p>​    </p>]]></content:encoded>
+      
+      <comments>http://curllen.github.io/2018/10/16/IDEA%E6%89%93%E5%8C%85%E7%B1%BB%E4%B8%BAJar/#disqus_thread</comments>
+    </item>
+    
+  </channel>
+</rss>
