@@ -8,8 +8,30 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>一枚程序员的博客</description>
-    <pubDate>Tue, 16 Oct 2018 13:32:00 GMT</pubDate>
+    <pubDate>Wed, 31 Oct 2018 06:48:36 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>mybatis系列(一):mybatis动态代理</title>
+      <link>http://curllen.uicp.io/2018/10/31/mybatis%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</link>
+      <guid>http://curllen.uicp.io/2018/10/31/mybatis%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</guid>
+      <pubDate>Wed, 31 Oct 2018 06:46:09 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;映射文件的配置参数中:parameterType参数都可以不写&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;默认规则&quot;&gt;&lt;a href=&quot;#默认规则&quot; class=&quot;headerlink&quot; title=&quot;默认规则&quot;&gt;&lt;/a&gt;默认规则&lt;/h2
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<blockquote><p>映射文件的配置参数中:parameterType参数都可以不写</p></blockquote><h2 id="默认规则"><a href="#默认规则" class="headerlink" title="默认规则"></a>默认规则</h2><ul><li>dao接口名称通常命名为XxxMapper.</li><li>映射文件:Xxxmapper.xml, statementid与接口的方法名保持一致.<h2 id="mybatis-config-xml配置-以下按该顺序写"><a href="#mybatis-config-xml配置-以下按该顺序写" class="headerlink" title="mybatis-config.xml配置(以下按该顺序写)"></a>mybatis-config.xml配置(以下按该顺序写)</h2></li></ul><ol><li>导入jdbc配置文件(使用$):<blockquote><p><code>&lt;properties resource=&quot;jdbc.properties&quot;&gt;&lt;/properties&gt;</code></p></blockquote></li><li>开启驼峰匹配：经典的数据库列名（多个单词下划线连接）映射到经典的java属性名(多个单词驼峰连接)<blockquote><p><code>&lt;settings&gt;&lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;&lt;/settings&gt;</code></p></blockquote></li><li>在映射文件中的参数使用别名(就可不用全路径,但开启了也可以全路径),方式2种,只写一种<blockquote><p><code>&lt;typeAliases&gt;</code><br><br><code>//自动将类名转换为别名,大小写不敏感</code><br><br><code>&lt;package name=&quot;包名&quot;&gt;</code><br><br><code>&lt;/typeAliases&gt;</code></p></blockquote></li><li>environments,可以配置多个environment(环境),选中环境的方式<blockquote><p>①<code>&lt;environments default=&quot;环境id名&quot;&gt;...&lt;environments&gt;</code></p></blockquote></li></ol><blockquote><p>②<code>SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader,&quot;环境id名&quot;);</code></p><ol start="5"><li>映入映射文件4种,只写一种<br><code>&lt;mappers&gt;</code><br><br><code>&lt;mapper resource=&quot;映射文件名&quot;&gt;</code><br><br><code>&lt;/mappers&gt;</code></li></ol></blockquote><h2 id="映射文件Xxxmapper-xml"><a href="#映射文件Xxxmapper-xml" class="headerlink" title="映射文件Xxxmapper.xml"></a>映射文件Xxxmapper.xml</h2><ol><li>将id回写到user对象<blockquote><p><code>useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot; keyColumn=&quot;id&quot;</code></p></blockquote></li><li>接收参数方式(两种)<blockquote><p>①${}:非预编译,直接拼接,不能防止sql注入,通常用于表名,<br>注意,如果sql语句中只用了一个参数,且接口文件没有使用@param注解,则只能固定使用${value}获取参数的值;</p></blockquote></li></ol><blockquote><p>②#{}:预编译,只是表示占位，与参数的名字无关，如果只有一个参数，可以使用#{任意参数名}接收参数值，会自动对应</p></blockquote><p>获取多个参数</p><blockquote><p>${}:接口使用@param注解</p></blockquote><blockquote><p>#{}:默认规则{0,1,param1,param2},即可以#{0} #{1},或者#{param1} #{param2}; 使用#param注解</p></blockquote><blockquote><p>如果在接口文件中使用了@param注释,则如果参数是pojo或者HashMap,则需要#{参数名.属性名}/${参数名.属性名}</p></blockquote><blockquote><p>${}/#{}在使用过程中空格对其的影响, 例如当其为like等的一部分参数,需要在%前后加空格,如’%’ ${} ‘%’,==什么时候加空格?==&gt;&gt;当${}/#{}和其他符号组合成为某个关键字的一个参数时,需要加.(课上说的就是%,具体待验证)</p></blockquote>]]></content:encoded>
+      
+      <comments>http://curllen.uicp.io/2018/10/31/mybatis%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>IDEA打包类为Jar</title>

@@ -81,7 +81,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java,mybatis,动态代理," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="一枚程序员的博客">
-<meta name="keywords" content="Curllen">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Curllen`Blog">
-<meta property="og:url" content="http://curllen.uicp.io/tags/打包/index.html">
+<meta name="description" content="映射文件的配置参数中:parameterType参数都可以不写  默认规则 dao接口名称通常命名为XxxMapper. 映射文件:Xxxmapper.xml, statementid与接口的方法名保持一致.mybatis-config.xml配置(以下按该顺序写)   导入jdbc配置文件(使用$): &amp;lt;properties resource=&amp;quot;jdbc.properties&amp;">
+<meta name="keywords" content="Java,mybatis,动态代理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis系列(一):mybatis动态代理">
+<meta property="og:url" content="http://curllen.uicp.io/2018/10/31/mybatis动态代理/index.html">
 <meta property="og:site_name" content="Curllen`Blog">
-<meta property="og:description" content="一枚程序员的博客">
+<meta property="og:description" content="映射文件的配置参数中:parameterType参数都可以不写  默认规则 dao接口名称通常命名为XxxMapper. 映射文件:Xxxmapper.xml, statementid与接口的方法名保持一致.mybatis-config.xml配置(以下按该顺序写)   导入jdbc配置文件(使用$): &amp;lt;properties resource=&amp;quot;jdbc.properties&amp;">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-31T06:48:36.089Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Curllen`Blog">
-<meta name="twitter:description" content="一枚程序员的博客">
+<meta name="twitter:title" content="mybatis系列(一):mybatis动态代理">
+<meta name="twitter:description" content="映射文件的配置参数中:parameterType参数都可以不写  默认规则 dao接口名称通常命名为XxxMapper. 映射文件:Xxxmapper.xml, statementid与接口的方法名保持一致.mybatis-config.xml配置(以下按该顺序写)   导入jdbc配置文件(使用$): &amp;lt;properties resource=&amp;quot;jdbc.properties&amp;">
 
 
 
@@ -134,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://curllen.uicp.io/tags/打包/"/>
+  <link rel="canonical" href="http://curllen.uicp.io/2018/10/31/mybatis动态代理/"/>
 
 
 
@@ -142,7 +143,7 @@
 <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
 <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
 
-  <title>标签: 打包 | Curllen`Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>mybatis系列(一):mybatis动态代理 | Curllen`Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -161,7 +162,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	
 	<a href="https://github.com/Curllen"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
@@ -301,54 +302,352 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>打包<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://curllen.uicp.io/2018/10/31/mybatis动态代理/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Curllen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ww2.sinaimg.cn/square/006omFxVjw8f2iopkbq8ej30sg0iznag.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Curllen`Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/16/IDEA打包类为Jar/" itemprop="url">
-              
-                <span itemprop="name">IDEA打包类为Jar</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">mybatis系列(一):mybatis动态代理</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-16T20:54:36+08:00"
-              content="2018-10-16" >
-          10-16
-        </time>
-      </div>
+        <div class="post-meta">
+		
+		
+          <span class="post-time">
+			
+			
+		
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T14:46:09+08:00">
+                2018-10-31
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  >
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/mybatis系列/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis系列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/10/31/mybatis动态代理/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/10/31/mybatis动态代理/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2018/10/31/mybatis动态代理/" class="leancloud_visitors" data-flag-title="mybatis系列(一):mybatis动态代理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  570
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>映射文件的配置参数中:parameterType参数都可以不写</p>
+</blockquote>
+<h2 id="默认规则"><a href="#默认规则" class="headerlink" title="默认规则"></a>默认规则</h2><ul>
+<li>dao接口名称通常命名为XxxMapper.</li>
+<li>映射文件:Xxxmapper.xml, statementid与接口的方法名保持一致.<h2 id="mybatis-config-xml配置-以下按该顺序写"><a href="#mybatis-config-xml配置-以下按该顺序写" class="headerlink" title="mybatis-config.xml配置(以下按该顺序写)"></a>mybatis-config.xml配置(以下按该顺序写)</h2></li>
+</ul>
+<ol>
+<li>导入jdbc配置文件(使用$):<blockquote>
+<p><code>&lt;properties resource=&quot;jdbc.properties&quot;&gt;&lt;/properties&gt;</code></p>
+</blockquote>
+</li>
+<li>开启驼峰匹配：经典的数据库列名（多个单词下划线连接）映射到经典的java属性名(多个单词驼峰连接)<blockquote>
+<p><code>&lt;settings&gt;&lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;&lt;/settings&gt;</code></p>
+</blockquote>
+</li>
+<li>在映射文件中的参数使用别名(就可不用全路径,但开启了也可以全路径),方式2种,只写一种<blockquote>
+<p><code>&lt;typeAliases&gt;</code><br><br><code>//自动将类名转换为别名,大小写不敏感</code><br><br><code>&lt;package name=&quot;包名&quot;&gt;</code><br><br><code>&lt;/typeAliases&gt;</code></p>
+</blockquote>
+</li>
+<li>environments,可以配置多个environment(环境),选中环境的方式<blockquote>
+<p>①<code>&lt;environments default=&quot;环境id名&quot;&gt;...&lt;environments&gt;</code></p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>②<code>SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader,&quot;环境id名&quot;);</code></p>
+<ol start="5">
+<li>映入映射文件4种,只写一种<br><code>&lt;mappers&gt;</code><br><br><code>&lt;mapper resource=&quot;映射文件名&quot;&gt;</code><br><br><code>&lt;/mappers&gt;</code></li>
+</ol>
+</blockquote>
+<h2 id="映射文件Xxxmapper-xml"><a href="#映射文件Xxxmapper-xml" class="headerlink" title="映射文件Xxxmapper.xml"></a>映射文件Xxxmapper.xml</h2><ol>
+<li>将id回写到user对象<blockquote>
+<p><code>useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot;
+ keyColumn=&quot;id&quot;</code></p>
+</blockquote>
+</li>
+<li>接收参数方式(两种)<blockquote>
+<p>①${}:非预编译,直接拼接,不能防止sql注入,通常用于表名,<br>注意,如果sql语句中只用了一个参数,且接口文件没有使用@param注解,则只能固定使用${value}获取参数的值;</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>②#{}:预编译,只是表示占位，与参数的名字无关，如果只有一个参数，可以使用#{任意参数名}接收参数值，会自动对应</p>
+</blockquote>
+<p>获取多个参数</p>
+<blockquote>
+<p>${}:接口使用@param注解</p>
+</blockquote>
+<blockquote>
+<p>#{}:默认规则{0,1,param1,param2},即可以#{0} #{1},或者#{param1} #{param2}; 使用#param注解</p>
+</blockquote>
+<blockquote>
+<p>如果在接口文件中使用了@param注释,则如果参数是pojo或者HashMap,则需要#{参数名.属性名}/${参数名.属性名}</p>
+</blockquote>
+<blockquote>
+<p>${}/#{}在使用过程中空格对其的影响, 例如当其为like等的一部分参数,需要在%前后加空格,如’%’ ${} ‘%’,==什么时候加空格?==&gt;&gt;当${}/#{}和其他符号组合成为某个关键字的一个参数时,需要加.(课上说的就是%,具体待验证)</p>
+</blockquote>
 
       
     </div>
+    
+    
+    
+	
+	
+      <div>
+        
+    <div style="text-align:center;color: #ccc;font-size:14px;">
+        ------ 本文结束 ------</div>
+    
+      </div>
+    
+	
+    
 
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Curllen
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://curllen.uicp.io/2018/10/31/mybatis动态代理/" title="mybatis系列(一):mybatis动态代理">http://curllen.uicp.io/2018/10/31/mybatis动态代理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"> <i class="fa fa-tag"></i> Java</a>
+          
+            <a href="/tags/mybatis/" rel="tag"> <i class="fa fa-tag"></i> mybatis</a>
+          
+            <a href="/tags/动态代理/" rel="tag"> <i class="fa fa-tag"></i> 动态代理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/16/IDEA打包类为Jar/" rel="next" title="IDEA打包类为Jar">
+                <i class="fa fa-chevron-left"></i> IDEA打包类为Jar
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -356,6 +655,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -376,8 +684,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -476,6 +793,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#默认规则"><span class="nav-number">1.</span> <span class="nav-text">默认规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis-config-xml配置-以下按该顺序写"><span class="nav-number">2.</span> <span class="nav-text">mybatis-config.xml配置(以下按该顺序写)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#映射文件Xxxmapper-xml"><span class="nav-number">3.</span> <span class="nav-text">映射文件Xxxmapper.xml</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -626,6 +959,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

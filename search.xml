@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mybatis系列(一):mybatis动态代理]]></title>
+    <url>%2F2018%2F10%2F31%2Fmybatis%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%2F</url>
+    <content type="text"><![CDATA[映射文件的配置参数中:parameterType参数都可以不写 默认规则 dao接口名称通常命名为XxxMapper. 映射文件:Xxxmapper.xml, statementid与接口的方法名保持一致.mybatis-config.xml配置(以下按该顺序写) 导入jdbc配置文件(使用$): &lt;properties resource=&quot;jdbc.properties&quot;&gt;&lt;/properties&gt; 开启驼峰匹配：经典的数据库列名（多个单词下划线连接）映射到经典的java属性名(多个单词驼峰连接) &lt;settings&gt;&lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;&lt;/settings&gt; 在映射文件中的参数使用别名(就可不用全路径,但开启了也可以全路径),方式2种,只写一种 &lt;typeAliases&gt;//自动将类名转换为别名,大小写不敏感&lt;package name=&quot;包名&quot;&gt;&lt;/typeAliases&gt; environments,可以配置多个environment(环境),选中环境的方式 ①&lt;environments default=&quot;环境id名&quot;&gt;...&lt;environments&gt; ②SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader,&quot;环境id名&quot;); 映入映射文件4种,只写一种&lt;mappers&gt;&lt;mapper resource=&quot;映射文件名&quot;&gt;&lt;/mappers&gt; 映射文件Xxxmapper.xml 将id回写到user对象 useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot; keyColumn=&quot;id&quot; 接收参数方式(两种) ①${}:非预编译,直接拼接,不能防止sql注入,通常用于表名,注意,如果sql语句中只用了一个参数,且接口文件没有使用@param注解,则只能固定使用${value}获取参数的值; ②#{}:预编译,只是表示占位，与参数的名字无关，如果只有一个参数，可以使用#{任意参数名}接收参数值，会自动对应 获取多个参数 ${}:接口使用@param注解 #{}:默认规则{0,1,param1,param2},即可以#{0} #{1},或者#{param1} #{param2}; 使用#param注解 如果在接口文件中使用了@param注释,则如果参数是pojo或者HashMap,则需要#{参数名.属性名}/${参数名.属性名} ${}/#{}在使用过程中空格对其的影响, 例如当其为like等的一部分参数,需要在%前后加空格,如’%’ ${} ‘%’,==什么时候加空格?==&gt;&gt;当${}/#{}和其他符号组合成为某个关键字的一个参数时,需要加.(课上说的就是%,具体待验证)]]></content>
+      <categories>
+        <category>Java</category>
+        <category>mybatis系列</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>mybatis</tag>
+        <tag>动态代理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[IDEA打包类为Jar]]></title>
     <url>%2F2018%2F10%2F16%2FIDEA%E6%89%93%E5%8C%85%E7%B1%BB%E4%B8%BAJar%2F</url>
     <content type="text"><![CDATA[有的时候需要把自己写工具打包成jar包,供自己或者他人使用. 情况分为两类: 1.自己的工具类没有导入(引用)第三方jar包; 2.自己的工具类引用了第三方jar包. 第一类的处理 对于情况1的处理步骤(以下情况适应一次打包多个文件): 如图, 例如打包实体类中的Book.java 打开File -&gt; Project Structure -&gt; Artifacts -&gt; + -&gt; JAR -&gt; Empty 在Output Layout中,依次建立文件夹,文件夹名字和结构和Book.java所在的路径保持一致 在Output Layout中,点击 + -&gt;file, 添加Book.Class文件 点击 Apply ,再点击 Create Manifest创建配置文MANIFEST.MF,该文件可以定为工程中任意目录下,完成配置 回到IDEA，选择Build -&gt; Build Artifacts，成功生成Jar包。生成的Jar包位于上图设置的Output directory 第二类的处理 对于情况2的处理,可以使用方式1,但是在其他项目中导入自己的jar包后, 也得把自己jar包所依赖的第三方jar包也导入该工程,否者无效,方式1中网上的通过Class-Path设置第三方jar包位置是不可用的,第二种方式如下: 如图, 例如打包实体类中的BeanCommonUtils.java,该类依赖第三方jar包commons-beanutils-1.9.3.jar 打开File -&gt; Project Structure -&gt; Artifacts -&gt; + -&gt; JAR -&gt; From modules with dependencies 上图出现的相关参数说明如下: module是你需要打成jar包的项目 MainClass是运行的主函数，如果不需要运行则可以不选择 jar files from libraries是项目打包的方式，下面选项大致的含义： extract to the target jar：把所有文件倒入进一个jar包里 copy to the。。。。：把项目的依赖包导出和项目一个目录，通过MANIFEST.MF文件来引用jar包。 回到IDEA，选择Build -&gt; Build Artifacts，成功生成Jar包。生成的Jar包位于上图设置的Output directory 这里如果你的项目需要打成一个可运行的jar包推荐第二种，反之第一种。另,未验证:如果项目中引用的Jar包有签名过，最后打包成的Jar包运行时会抛出错误：java.lang.SecurityException: Invalid signature file digest for Manifest main attributes From modules with dependencies，==会把在项目中用到的Jar包解压开==，当成项目的一部分，打包到最后的Jar包中，这样就不会出现采用方式1时，通过网上说的使用Class-Path方式设置第三方jar包位置时导致出现的找不到类异常。 ==该方式只适合于该工程所有类都需要被打包到该jar包中的情况!== ==生成的jar中会有该工程lib文件夹下的第三方jar包, 这些jar已不产生作用, 可以删除!== ​]]></content>
