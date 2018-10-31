@@ -316,6 +316,223 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://curllen.uicp.io/2018/10/31/mybatis之resultMap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Curllen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ww2.sinaimg.cn/square/006omFxVjw8f2iopkbq8ej30sg0iznag.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Curllen`Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/31/mybatis之resultMap/" itemprop="url">mybatis系列(四):maybatis强大特性之resultMap</a></h1>
+        
+
+        <div class="post-meta">
+		
+		
+          <span class="post-time">
+			
+			
+		
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T15:12:49+08:00">
+                2018-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  >
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/mybatis系列/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis系列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/10/31/mybatis之resultMap/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://curllen.uicp.io/2018/10/31/mybatis之resultMap/" class="cy_cmt_count" data-xid="2018/10/31/mybatis之resultMap/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2018/10/31/mybatis之resultMap/" class="leancloud_visitors" data-flag-title="mybatis系列(四):maybatis强大特性之resultMap">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+位于sql语句所在的映射文件中(也可以抽取为一个单独的映射文件),mybatis最强大的功能, 多用于多表查询的情景
+
+解决两大问题
+POJO属性名和表结构字段名不一致的问题(有些情况下也不是驼峰格式)
+完成高级查询,包括但是不限于: 一对一、一对多、多对多.
+在映射文件中定义
+
+
+
+123456789101112&lt;!-- resultMap:自定义映射关系		属性：type-结果集的封装类型，id-唯一标识，autoMapping-开启自动匹配，如果开启了驼峰匹配，就以驼峰匹配的形式进行匹配		id:指定
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/31/mybatis之resultMap/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+	
+	
+	
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://curllen.uicp.io/2018/10/31/mybatis抽取SQL片段/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1217,7 +1434,7 @@ dao接口名称通常命名为XxxMapper.
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1239,7 +1456,7 @@ dao接口名称通常命名为XxxMapper.
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1325,7 +1542,7 @@ dao接口名称通常命名为XxxMapper.
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2.5k</span>
+    <span title="Site words total count">3.9k</span>
   
 </div>
 
