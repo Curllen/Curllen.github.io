@@ -8,11 +8,33 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>一枚程序员的博客</description>
-    <pubDate>Wed, 31 Oct 2018 06:58:32 GMT</pubDate>
+    <pubDate>Wed, 31 Oct 2018 07:06:10 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>mybatis系列(一):mybatis动态SQL</title>
+      <title>mybatis系列(三):抽取SQL片段-优化SQL</title>
+      <link>http://curllen.uicp.io/2018/10/31/mybatis%E6%8A%BD%E5%8F%96SQL%E7%89%87%E6%AE%B5/</link>
+      <guid>http://curllen.uicp.io/2018/10/31/mybatis%E6%8A%BD%E5%8F%96SQL%E7%89%87%E6%AE%B5/</guid>
+      <pubDate>Wed, 31 Oct 2018 07:02:00 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;如果某些sql片段在多个sql语句中被复用,可以将这些sql片段抽取为一个单独的映射文件(例如SQL语句中*,都尽可能用具体的字段名代替,以提高执行效率,这个过程中会出现大量重复sql片段).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;抽
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<blockquote><p>如果某些sql片段在多个sql语句中被复用,可以将这些sql片段抽取为一个单独的映射文件(例如SQL语句中*,都尽可能用具体的字段名代替,以提高执行效率,这个过程中会出现大量重复sql片段).</p></blockquote><h2 id="抽取片段"><a href="#抽取片段" class="headerlink" title="抽取片段"></a>抽取片段</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 为何要抽取以下片段,去除SQL语句中的*,可以提高执行效率 --&gt;</span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">  PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span><br><span class="line">  &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line">&lt;!-- namespace(命名空间)：映射文件的唯一标识 --&gt;</span><br><span class="line">&lt;mapper namespace=&quot;CommonSQL&quot;&gt;</span><br><span class="line">    &lt;!-- 通过sql标签&gt;id唯一标识片段 --&gt;</span><br><span class="line">&lt;sql id=&quot;commonSql&quot;&gt;</span><br><span class="line">id,user_name,</span><br><span class="line">password,</span><br><span class="line">name,</span><br><span class="line">age,</span><br><span class="line">sex,</span><br><span class="line">birthday,</span><br><span class="line">created,</span><br><span class="line">updated</span><br><span class="line">&lt;/sql&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure><h2 id="引用片段"><a href="#引用片段" class="headerlink" title="引用片段"></a>引用片段</h2><ul><li>mybatis-config.xml</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span><br><span class="line">    &lt;mapper resource=&quot;CommonSQL.xml&quot;</span><br><span class="line">&lt;/mappers&gt;</span><br></pre></td></tr></table></figure><ul><li>需要使用片段的映射文件:在需要使用该sql片段的地方通过include标签的refid属性引用该sql片段：<include refid="”名称空间.sql片段的id”"></include></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- &lt;sql id=&quot;commonSql&quot;&gt;</span><br><span class="line">id,user_name,</span><br><span class="line">password,</span><br><span class="line">name,</span><br><span class="line">age,</span><br><span class="line">sex,</span><br><span class="line">birthday,</span><br><span class="line">created,</span><br><span class="line">updated</span><br><span class="line">&lt;/sql&gt; --&gt;</span><br><span class="line"></span><br><span class="line">&lt;select id=&quot;queryUsersLikeUserName&quot; resultType=&quot;User&quot;&gt;</span><br><span class="line">select &lt;include refid=&quot;CommonSQL.commonSql&quot;&gt;&lt;/include&gt; from tb_user where user_name like &apos;%&apos; #&#123;userName&#125; &apos;%&apos;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://curllen.uicp.io/2018/10/31/mybatis%E6%8A%BD%E5%8F%96SQL%E7%89%87%E6%AE%B5/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>mybatis系列(二):mybatis动态SQL</title>
       <link>http://curllen.uicp.io/2018/10/31/mybatis%E5%8A%A8%E6%80%81SQL/</link>
       <guid>http://curllen.uicp.io/2018/10/31/mybatis%E5%8A%A8%E6%80%81SQL/</guid>
       <pubDate>Wed, 31 Oct 2018 06:57:42 GMT</pubDate>
