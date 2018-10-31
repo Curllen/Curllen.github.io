@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="一枚程序员的博客">
+<meta name="description" content="联级查询时,  很多情况下只需要单张表的数据, 无需查询所有表, 延时加载实现了这个需求, 减少资源的浪费.  使用说明MyBatis的延迟加载  只能对关联对象进行查询时，使用延迟加载策略。对于主加载对象，均采用直接加载。关联对象以属性的方式添加在主对象中  例如:查询订单表中某个订单信息以及和该订单相关的用户信息: 12graph LR主加载对象:订单对象--&amp;gt;可按需查询的关联对象:用">
 <meta name="keywords" content="Curllen">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Curllen`Blog">
-<meta property="og:url" content="http://curllen.uicp.io/tags/动态SQL/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis系列(五):mybatis延迟加载">
+<meta property="og:url" content="http://curllen.uicp.io/2018/10/31/mybatis延迟加载/index.html">
 <meta property="og:site_name" content="Curllen`Blog">
-<meta property="og:description" content="一枚程序员的博客">
+<meta property="og:description" content="联级查询时,  很多情况下只需要单张表的数据, 无需查询所有表, 延时加载实现了这个需求, 减少资源的浪费.  使用说明MyBatis的延迟加载  只能对关联对象进行查询时，使用延迟加载策略。对于主加载对象，均采用直接加载。关联对象以属性的方式添加在主对象中  例如:查询订单表中某个订单信息以及和该订单相关的用户信息: 12graph LR主加载对象:订单对象--&amp;gt;可按需查询的关联对象:用">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-31T10:44:20.644Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Curllen`Blog">
-<meta name="twitter:description" content="一枚程序员的博客">
+<meta name="twitter:title" content="mybatis系列(五):mybatis延迟加载">
+<meta name="twitter:description" content="联级查询时,  很多情况下只需要单张表的数据, 无需查询所有表, 延时加载实现了这个需求, 减少资源的浪费.  使用说明MyBatis的延迟加载  只能对关联对象进行查询时，使用延迟加载策略。对于主加载对象，均采用直接加载。关联对象以属性的方式添加在主对象中  例如:查询订单表中某个订单信息以及和该订单相关的用户信息: 12graph LR主加载对象:订单对象--&amp;gt;可按需查询的关联对象:用">
 
 
 
@@ -134,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://curllen.uicp.io/tags/动态SQL/"/>
+  <link rel="canonical" href="http://curllen.uicp.io/2018/10/31/mybatis延迟加载/"/>
 
 
 
@@ -142,7 +143,7 @@
 <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
 <link href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" rel="stylesheet">
 
-  <title>标签: 动态SQL | Curllen`Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>mybatis系列(五):mybatis延迟加载 | Curllen`Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -161,7 +162,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	
 	<a href="https://github.com/Curllen"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
@@ -301,54 +302,282 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>动态SQL<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://curllen.uicp.io/2018/10/31/mybatis延迟加载/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Curllen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ww2.sinaimg.cn/square/006omFxVjw8f2iopkbq8ej30sg0iznag.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Curllen`Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/31/mybatis动态SQL/" itemprop="url">
-              
-                <span itemprop="name">mybatis系列(二):mybatis动态SQL</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">mybatis系列(五):mybatis延迟加载</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-31T14:57:42+08:00"
-              content="2018-10-31" >
-          10-31
-        </time>
-      </div>
+        <div class="post-meta">
+		
+		
+          <span class="post-time">
+			
+			
+		
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T18:43:19+08:00">
+                2018-10-31
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/10/31/mybatis延迟加载/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/10/31/mybatis延迟加载/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2018/10/31/mybatis延迟加载/" class="leancloud_visitors" data-flag-title="mybatis系列(五):mybatis延迟加载">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  957
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>联级查询时,  很多情况下只需要单张表的数据, 无需查询所有表, 延时加载实现了这个需求, 减少资源的浪费.</p>
+</blockquote>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p>MyBatis的延迟加载</p>
+<ul>
+<li><p>只能对关联对象进行查询时，使用延迟加载策略。对于主加载对象，均采用直接加载。关联对象以属性的方式添加在主对象中</p>
+<blockquote>
+<p>例如:查询订单表中某个订单信息以及和该订单相关的用户信息:<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">主加载对象:订单对象--&gt;可按需查询的关联对象:用户对象</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>要应用延迟加载查询，只能使用多表单独查询，而不能使用多表连接查询。因为多表连接查询的本质是查询一张表，将多张表首先连接为了一张表后，再进行的查询。查询一个信息，就会将所有信息全部查询到。</p>
+<blockquote>
+<p>根据前文例子构造用于==非延时加载的传统联合查询的SQL语句==如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from order o left join user u on  o.user_id=u.id where o.order_number=201810313239</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><em>本语句使用了多表连接查询&gt;左连接查询, 延时加载相关设置对其是无效的, 本语句查询结果是一张组合的表, 不可拆解.</em></p>
+<blockquote>
+<p>改造上文SQL语句,成为适用延时加载SQL语句:<br> 1) mybatis-config.xml开启全局配置<br> 2) 添加cglib的依赖(从3.4.1版本开始不用添加)<br> 3) 添加resultMap和改造原映射文件中SQL语句</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>相关的pojo:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Order implements Serializable &#123;</span><br><span class="line">  private static final long serialVersionUID = 1540810318910L;</span><br><span class="line">  //订单id</span><br><span class="line">  private Integer id;</span><br><span class="line">  //用户id</span><br><span class="line">  private Long userId;</span><br><span class="line">  //订单号</span><br><span class="line">  private String orderNumber;</span><br><span class="line">  //用户</span><br><span class="line">  private User user;</span><br><span class="line">  ...set/get等省略...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class User &#123;</span><br><span class="line">    private Long id;</span><br><span class="line">    // 用户名</span><br><span class="line">    private String userName;</span><br><span class="line">    // 密码</span><br><span class="line">    private String password;</span><br><span class="line">    // 姓名</span><br><span class="line">    private String name;</span><br><span class="line">    // 年龄</span><br><span class="line">    private Integer age;</span><br><span class="line">    // 性别，1男性，2女性</span><br><span class="line">    private Integer sex;</span><br><span class="line">    // 出生日期</span><br><span class="line">    private Date birthday;</span><br><span class="line">    // 创建时间</span><br><span class="line">    private Date created;</span><br><span class="line">    // 更新时间</span><br><span class="line">    private Date updated;</span><br><span class="line">    ...set/get等省略...</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="mybatis-config-xml配置"><a href="#mybatis-config-xml配置" class="headerlink" title="mybatis-config.xml配置"></a>mybatis-config.xml配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 全局配置参数 --&gt;</span><br><span class="line">	&lt;settings&gt;</span><br><span class="line">		&lt;!-- 延迟加载总开关 --&gt;</span><br><span class="line">		&lt;setting name=&quot;lazyLoadingEnabled&quot; value=&quot;true&quot; /&gt;	</span><br><span class="line">		&lt;!-- 设置按需加载 --&gt;</span><br><span class="line">		&lt;!-- mybatis在3.4.1开始默认为false--&gt;</span><br><span class="line">		&lt;setting name=&quot;aggressiveLazyLoading&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">	&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="pom-xml添加依赖-假定是maven过程"><a href="#pom-xml添加依赖-假定是maven过程" class="headerlink" title="pom.xml添加依赖(假定是maven过程)"></a>pom.xml添加依赖(假定是maven过程)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- https://mvnrepository.com/artifact/cglib/cglib --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;cglib&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;cglib&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.2.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="修改映射文件-本例不把resultMap抽取为额外映射文件"><a href="#修改映射文件-本例不把resultMap抽取为额外映射文件" class="headerlink" title="修改映射文件(本例不把resultMap抽取为额外映射文件)"></a>修改映射文件(本例不把resultMap抽取为额外映射文件)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> &lt;resultMap id=&quot;orderUserLazyMap&quot; type=&quot;Order&quot; autoMapping=&quot;true&quot;&gt;</span><br><span class="line">     &lt;--</span><br><span class="line">         column:查询结果的id字段</span><br><span class="line">         property:order对象的id属性</span><br><span class="line">         数据库表的主键id映射id, 即使相同也不要省,提高性能</span><br><span class="line">     --&gt;</span><br><span class="line">     &lt;id column=&quot;id&quot; property=&quot;id&quot; /&gt;</span><br><span class="line">     &lt;!--</span><br><span class="line">         property:order对象的user属性</span><br><span class="line">         javaType：属性名对应的java类型</span><br><span class="line">autoMapping:不写</span><br><span class="line">select:指定延迟加载要执行的statement的id（是根据user_id查询用户信息</span><br><span class="line">       的statement,注意:需要前边加namespace</span><br><span class="line">      column：订单表中关联用户表的列，是user_id,作为参数传入statement中,</span><br><span class="line">              只有一个参数时statement中的#&#123;&#125;原则上可以随意.</span><br><span class="line">              如果是多个参数,则需要使用数组,形如:column=&quot;&#123;a=user_id,aa=参数2,cc=参数3&#125;&quot;,</span><br><span class="line">              使用时在statement中的需要哪个参数,如第二个,通过#&#123;aa&#125;/$&#123;aa&#125;来使用    </span><br><span class="line">     --&gt;</span><br><span class="line">     &lt;association property=&quot;user&quot; javaType=&quot;User&quot; select=&quot;selectUserById&quot;  column=&quot;user_id&quot;/&gt;</span><br><span class="line"> &lt;/resultMap&gt;</span><br><span class="line"> &lt;!-- 语句1,查询订单信息 --&gt;</span><br><span class="line"> &lt;select id=&quot;selectOrderUserLazy&quot; resultMap=&quot;orderUserLazyMap&quot;&gt;</span><br><span class="line">   select  *  from tb_order where order_number = #&#123;orderNumber&#125;</span><br><span class="line"> &lt;/select&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &lt;!-- 语句2,查询用户信息 --&gt;</span><br><span class="line"> &lt;select id=&quot;selectUserById&quot; resultType=&quot;User&quot;&gt;</span><br><span class="line">     select * from tb_user where id  = #&#123;id&#125;;</span><br><span class="line"> &lt;/select&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
+	
+	
+      <div>
+        
+    <div style="text-align:center;color: #ccc;font-size:14px;">
+        ------ 本文结束 ------</div>
+    
+      </div>
+    
+	
+    
 
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Curllen
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://curllen.uicp.io/2018/10/31/mybatis延迟加载/" title="mybatis系列(五):mybatis延迟加载">http://curllen.uicp.io/2018/10/31/mybatis延迟加载/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/31/mybatis之resultMap/" rel="next" title="mybatis系列(四):maybatis强大特性之resultMap">
+                <i class="fa fa-chevron-left"></i> mybatis系列(四):maybatis强大特性之resultMap
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -356,6 +585,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -376,8 +614,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -476,6 +723,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用说明"><span class="nav-number">1.</span> <span class="nav-text">使用说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis-config-xml配置"><span class="nav-number">1.1.</span> <span class="nav-text">mybatis-config.xml配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pom-xml添加依赖-假定是maven过程"><span class="nav-number">1.2.</span> <span class="nav-text">pom.xml添加依赖(假定是maven过程)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改映射文件-本例不把resultMap抽取为额外映射文件"><span class="nav-number">1.3.</span> <span class="nav-text">修改映射文件(本例不把resultMap抽取为额外映射文件)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -626,6 +889,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
